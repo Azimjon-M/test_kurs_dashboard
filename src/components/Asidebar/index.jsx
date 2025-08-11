@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
     FaBars,
     FaTimes,
@@ -16,10 +16,16 @@ const menuItems = [
 ];
 
 const Asidebar = ({ isOpen, setIsOpen }) => {
+    const navigate = useNavigate();
+
     const handleLogout = () => {
-        console.log('Log out clicked');
-        // logout funksiyangni shu yerda yoz:
-        // masalan: localStorage.clear(), navigate('/login') va h.k.
+        const isConfirm = confirm('Chiqishga ishonchingiz komilmi?');
+        if (isConfirm) {
+            localStorage.clear('access_token');
+            localStorage.clear('refresh_token');
+            localStorage.clear('role');
+            navigate('/login');
+        }
     };
 
     return (
@@ -37,7 +43,7 @@ const Asidebar = ({ isOpen, setIsOpen }) => {
             >
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="text-gray-700 dark:text-gray-200 text-xl mx-2"
+                    className="text-gray-700 dark:text-gray-200 text-xl mx-2 cursor-pointer"
                 >
                     {isOpen ? <FaTimes /> : <FaBars />}
                 </button>
@@ -69,7 +75,7 @@ const Asidebar = ({ isOpen, setIsOpen }) => {
                     {/* Logout */}
                     <button
                         onClick={handleLogout}
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg transition duration-200 w-full text-[red] hover:bg-red-100 dark:hover:bg-red-900"
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg transition duration-200 w-full text-[red] hover:bg-red-100 dark:hover:bg-red-900 cursor-pointer"
                     >
                         <FaSignOutAlt />
                         <span className="whitespace-nowrap">Chiqish</span>

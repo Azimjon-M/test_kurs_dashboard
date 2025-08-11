@@ -1,0 +1,32 @@
+[
+    {
+        id: '',
+        title: 'string',
+        category: 'select',
+        category_name: '',
+        category_color: 'X',
+        description: '',
+        short_description: '',
+        tags: '',
+        price: '',
+        students: '',
+        poster: '',
+        isDraft: '',
+        createdAt: '',
+        duration: '',
+        difficulty: '',
+        role: '',
+    },
+    {
+        title: "string",
+        category: "string",
+        description: "string",
+        short_description: "string",
+        tags_raw: "string, string, string",
+        tags: "[tag, tag]",
+        price: "number",
+        status: "draft vs active/public",
+        difficulty: "range: beginner, medium, master (select)",
+        poster_file: "file",
+    }
+];
